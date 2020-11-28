@@ -104,4 +104,28 @@ public class dbSample {
 		}
 	}
 
+	// 황근민
+		// 아이디 중복 체크 함수
+		public boolean checkID(String id) throws Exception
+		{
+			Class.forName(DRIVER);
+			
+			try(Connection conn = DriverManager.getConnection(dbURL))
+			{
+				System.out.println("연결 성공");
+				
+				Statement st = conn.createStatement();
+				ResultSet rs = st.executeQuery("SELECT ID from userinfo");
+				
+				while(rs.next())
+				{
+					if(rs.getString("ID").equals(id))
+						return false; 
+				}
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+				return true;
+			
+		}
 }
