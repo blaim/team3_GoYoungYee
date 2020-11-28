@@ -179,26 +179,24 @@ public class HomeController {
 		return "register_page";
 	}
 	
-	//작성자 : 임경수
-	//같은 비밀번호 인지 확인후 db에 정보 저장한다
+	
+	//작성자: 황근민
+	//입력한 아이디와 db에서 중복되는 아이디가 없으면 db에 정보를 저장한다.
 	@RequestMapping(value="register.do", method = RequestMethod.POST)
 	String RegisterHandle(String ID, String PW, String PW_repeat, String name, int age) throws Exception
 	{
 		
-		if(!PW.equals(PW_repeat))
-		{
-			System.out.println("동일한 비밀번호 입력");
-			return "register_page";
-		}
-		else
-		{
-			dbSample db = new dbSample();
-			db.InsertInfo(ID, PW, name, age);
+		if(db.checkID(ID)) {
+				db.InsertInfo(ID, PW, name, age);
+				System.out.println("success");			
+				return "register_page";
+			}
 			
-			System.out.println("success");
-			
-			return "register_page";
-		}
+			else
+			{
+				System.out.println("fail_중복된 아이디입니다.");			
+				return "register_page";
+			}
 	}
 }
 
