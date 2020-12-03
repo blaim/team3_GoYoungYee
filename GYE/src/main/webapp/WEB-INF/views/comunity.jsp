@@ -16,6 +16,10 @@
 				margin:0px;
 				padding:0px;
 			}
+			body{
+				background-color:#0b0c2a;
+			}
+			
 			#userid{
 				margin: 8 8;
 				height:80%;
@@ -37,6 +41,7 @@
 			h1{
 				text-align:center;
 				font-size:100px;
+				color:yellow;
 			}
 			.header{
 				background-color:yellow;
