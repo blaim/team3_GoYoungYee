@@ -16,12 +16,15 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
+import javax.servlet.http.HttpSession;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 /**
  * Handles requests for the application home page.
@@ -250,13 +253,7 @@ public class HomeController {
 			return "db";
 		}
 		
-	//작성자 : 임경수
-	//id만드는 창 출력
-	@RequestMapping(value="/register", method = RequestMethod.GET)
-	public String LoginPage(Model model)
-	{
-		return "register_page";
-	}
+	
 	
 	
 	//작성자: 황근민
@@ -290,6 +287,49 @@ public class HomeController {
 			}
 		}
 	}
+	
+	
+	@RequestMapping(value="/login", method = RequestMethod.GET)
+	public String LoginPage(Model model)
+	{
+		return "login";
+	}
+	
+	
+	//작성자: 황근민
+	//로그인 페이지 실행, DB와 비교하여 아이디와 비밀번호가 일치하면 세션을 클라이언트에게 제공
+	@RequestMapping(value="/login.do", method = RequestMethod.POST)
+	String LoginHandle(HttpSession session, @RequestParam(value="ID") String ID, @RequestParam(value="PW") String PW) throws Exception
+	{
+		dbSample db = new dbSample();
+		
+		if(db.Login(ID, PW))
+			{
+				session.setAttribute("loginCheck", true);
+				session.setAttribute("id", ID);
+				System.out.println("success_로그인 성공.");
+				return "main_page";
+			}
+		
+		else
+			{
+				System.out.println("fail_로그인 실패.");
+				return "login";
+			}
+	}
+	
+	//작성자: 황근민
+	//로그아웃 실행, 로그아웃 클릭하면 세션을 서버로 반환
+	@RequestMapping(value="/logout.do", method = RequestMethod.POST)
+    public String logoutProcess(HttpSession session) {
+                            
+        session.setAttribute("loginCheck",null);
+        session.setAttribute("id",null);
+        
+        return "main_page";
+    }
+	
+	
 }
 
  

@@ -160,8 +160,18 @@
 	</head>
 	<body>
 		<div class="header">
+			<c:choose>
+				<c:when test="${sessionScope.loginCheck eq true}">        	
+        			${sessionScope.id} 님이 로그인 되었습니다.  
+        			<form action="logout.do" method='post'>
+        				<button type="submit" class="site-btn">로그아웃</button>
+        			</form>
+    			</c:when>
+    			<c:otherwise>
+					<a id='sign_in' href="/GYE/login">회원가입</a>
+				</c:otherwise>
+			</c:choose>	
 			
-			<a id='sign_in' href="#sign">로그인</a>
 		</div>
 		<h1>Take A Look</h1>
 		

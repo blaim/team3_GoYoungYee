@@ -271,12 +271,17 @@
 	</head>
 	<body>
 		<div class="header">
-			<form>
-				<input id='userid' type='text' placeholder='ID'/>
-				<input id='passwd' type='password' placeholder='password'/>
-				<input id='id_submit' type='submit'>
-			</form>
-			<a id='sign_in' href="#sign">회원가입</a>
+			<c:choose>
+				<c:when test="${sessionScope.loginCheck eq true}">        	
+        			${sessionScope.id} 님이 로그인 되었습니다.  
+        			<form action="logout.do" method='post'>
+        				<button type="submit" class="site-btn">로그아웃</button>
+        			</form>
+    			</c:when>
+    			<c:otherwise>
+					<a id='sign_in' href="/GYE/login">회원가입</a>
+				</c:otherwise>
+			</c:choose>	
 		</div>
 		<h1>Take A Look</h1>
 		
@@ -353,6 +358,7 @@
 				<input id='submit_review' type='submit'>
 			</form>
 		</div>
+		
 		
 		<script>
 			function open_form(){

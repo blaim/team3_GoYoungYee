@@ -223,5 +223,31 @@ Class.forName(DRIVER);
 				return true;
 			
 		}
+		
+		// 작성자 황근민
+				// 사용자가 입력한 id와 password를 db와 비교하여 로그인을 실행하는 함수
+				public boolean Login(String id, String pw) throws Exception
+				{
+					Class.forName(DRIVER);
+					 
+					try(Connection conn = DriverManager.getConnection(dbURL))
+					{
+						System.out.println("연결 성공");
+						Statement st = conn.createStatement();
+						ResultSet rs = st.executeQuery("SELECT * from userinfo");
+						
+						while(rs.next())
+						{
+							if(rs.getString("ID").equals(id))
+								if(rs.getString("password").equals(pw))
+									return true;
+						}
+										
+						}catch(Exception e) {
+							e.printStackTrace();
+						}
+						
+						return false;
+					}
 
 }
