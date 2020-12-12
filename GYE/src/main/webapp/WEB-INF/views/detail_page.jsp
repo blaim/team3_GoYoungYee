@@ -7557,15 +7557,7 @@ css코드는 무료 오픈소스 템플릿을 이용하여 작성되었습니다
                                 <h3><%= information[0] %></h3>
                                 <span><%= information[1] %></span>
                             </div>
-                            <div class="anime__details__rating">
-                                <div class="rating">
-                                    <a href="#"><i class="fa fa-star"></i></a>
-                                    <a href="#"><i class="fa fa-star"></i></a>
-                                    <a href="#"><i class="fa fa-star"></i></a>
-                                    <a href="#"><i class="fa fa-star"></i></a>
-                                    <a href="#"><i class="fa fa-star-half-o"></i></a>
-                                </div>
-                            </div>
+                            
                       
                             <div class="anime__details__widget">
                                 <div class="row">

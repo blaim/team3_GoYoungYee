@@ -4,10 +4,11 @@
 작성일자 : 2020-11-26
 프로그램 설명: 리뷰 보여주는 틀 작성하고, 자바스크립트를 이용해서 리뷰 작성하게 한다
 -->
-
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/moonspam/NanumSquare/master/nanumsquare.css">
+
 <html>
 	
 	<head>
@@ -16,10 +17,13 @@
 				margin:0px;
 				padding:0px;
 			}
+            .nanumsquare {
+             font-family: 'NanumSquare', sans-serif !important;
+            }
 			body{
 				background-color:#0b0c2a;
+                 font-weight: bold;
 			}
-			
 			#userid{
 				margin: 8 8;
 				height:80%;
@@ -41,10 +45,10 @@
 			h1{
 				text-align:center;
 				font-size:100px;
-				color:yellow;
+                color:white;
 			}
 			.header{
-				background-color:yellow;
+				background-color:#070720;
 				width:100%;
 				height:60px;
 				display:block;
@@ -74,7 +78,7 @@
 					margin: 0;
 					padding: 0;
 					
-					background-color: #333;
+					background-color: #1A1B28;
 				}
 				ul:after{
 					content:'';
@@ -95,12 +99,12 @@
 					background-color: #111;
 				}
 				.active {
-					background-color: #4CAF50;
+					background-color: #e53637;
 				}
 			.movies{
 				
 				
-				background-color:blue;
+				background-color:#252642;
 				
 				
 				}
@@ -114,7 +118,7 @@
 			
 			
 			.footer{
-				background-color:yellow;
+				background-color:#070720;
 				width:100%;
 				height:60px;
 				bottom:0px;
@@ -209,7 +213,7 @@
 				top:10%;
 				width:70%;
 				height:80%;
-				background-color:blue;
+				background-color:#252642;
 				position:absolute;
 				display:none;
 			}
@@ -229,7 +233,7 @@
 				
 				width:80%;
 				height:80%;
-				background-color:green;
+				background-color:silver;
 				display:flex;
 				flex-direction:column;
 				justify-content:center;
@@ -271,17 +275,12 @@
 	</head>
 	<body>
 		<div class="header">
-			<c:choose>
-				<c:when test="${sessionScope.loginCheck eq true}">        	
-        			${sessionScope.id} 님이 로그인 되었습니다.  
-        			<form action="logout.do" method='post'>
-        				<button type="submit" class="site-btn">로그아웃</button>
-        			</form>
-    			</c:when>
-    			<c:otherwise>
-					<a id='sign_in' href="/GYE/login">회원가입</a>
-				</c:otherwise>
-			</c:choose>	
+			<form>
+				<input id='userid' type='text' placeholder='ID'/>
+				<input id='passwd' type='password' placeholder='password'/>
+				<input id='id_submit' type='submit'>
+			</form>
+			<a id='sign_in' href="#sign">회원가입</a>
 		</div>
 		<h1>Take A Look</h1>
 		
@@ -358,7 +357,6 @@
 				<input id='submit_review' type='submit'>
 			</form>
 		</div>
-		
 		
 		<script>
 			function open_form(){

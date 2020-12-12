@@ -9,6 +9,7 @@
 package co.df.ds;
 
 
+import java.net.URLEncoder;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -330,6 +331,128 @@ public class HomeController {
     }
 	
 	
+	
+	//작성자:임경수
+	//커뮤니티 페이지의 글을 출력하는 함수
+	@RequestMapping(value="/comunity_post", method = RequestMethod.GET) 
+	public String Comunity_(String title, Model model)throws Exception
+	{
+		dbSample conn = new dbSample();
+		String[] post_info = new String[7];
+		ArrayList comments = new ArrayList();
+		
+		post_info = conn.GetPostInfo_from_title(title);
+		comments = conn.Get_comments_by_serial_number(post_info[6]);
+		
+		model.addAttribute("post_information", post_info);
+		model.addAttribute("comment_information", comments);
+		
+		return "comunity_specific";
+	}
+	
+	//작성자:임경수
+	//특정 글의 좋아요를 1 증가시킨다
+	@RequestMapping(value="/increase_rate.do", method = RequestMethod.POST)
+    public String LikeProcess(String like)throws Exception {
+        dbSample conn = new dbSample();
+		String[] post_info = new String[7];
+		
+		System.out.println(like);
+		
+		post_info = conn.GetPostInfo_from_title(like);
+		if(conn.Increase_spe_post_rate(like)==false)
+		{
+			System.out.println("ERROR");
+			return "main_page";
+		}
+		
+		
+		
+		
+		like = URLEncoder.encode(like,"UTF-8");
+        
+        return "redirect:http://localhost:7569/GYE/comunity_post?title=" + like;
+    }
+	
+	//작성자:임경수
+		//특정 글의 싫어요를 1 증가시킨다
+		@RequestMapping(value="/decrease_rate.do", method = RequestMethod.POST)
+	    public String DisLikeProcess(String dislike)throws Exception {
+	        dbSample conn = new dbSample();
+			String[] post_info = new String[7];
+			
+			System.out.println(dislike);
+			
+			post_info = conn.GetPostInfo_from_title(dislike);
+			if(conn.Decrease_spe_post_rate(dislike)==false)
+			{
+				System.out.println("ERROR");
+				return "main_page";
+			}
+			
+			dislike = URLEncoder.encode(dislike,"UTF-8");
+	        return "redirect:http://localhost:7569/GYE/comunity_post?title=" + dislike;
+	    }
+		
+		
+		@RequestMapping(value="/write_comment.do", method = RequestMethod.POST)
+		public String WriteCommentProcess(String comment_writer_name, String comment_content, String title)throws Exception
+		{
+			dbSample conn = new dbSample();
+			System.out.println(comment_writer_name);
+			System.out.println(comment_content);
+			System.out.println(title);
+			if(conn.Write_comment_to_spe_review(title, comment_writer_name, comment_content)==false)
+			{
+				System.out.println("ERROR");
+				return "main_page";
+			}
+			
+			
+			
+			title = URLEncoder.encode(title,"UTF-8");
+	        return "redirect:http://localhost:7569/GYE/comunity_post?title=" + title;
+		}
+		
+		@RequestMapping(value="/delete_comment.do", method = RequestMethod.POST)
+		public String DeleteCommentProcess(String delete_element)throws Exception
+		{
+			dbSample conn = new dbSample();
+			
+			String write_time = delete_element.substring(0,19);
+			String number = delete_element.substring(19,20);
+			String title = delete_element.substring(20, 20 + Integer.parseInt(number));
+			String contents = delete_element.substring(19+Integer.parseInt(number)+1);
+			
+			
+			
+			System.out.println(write_time);
+			System.out.println(title);
+			System.out.println(contents);
+			
+			if(conn.Delete_comment(write_time, contents)==false)
+			{
+				return "main_page";
+			}
+			
+			title = URLEncoder.encode(title,"UTF-8");
+	        return "redirect:http://localhost:7569/GYE/comunity_post?title=" + title;
+		}
+		
+		@RequestMapping(value="/delete_post.do", method = RequestMethod.POST)
+		public String DeleteOnePostProcess(String title_name)throws Exception
+		{
+			dbSample conn = new dbSample();
+			
+			if(conn.Delete_post(title_name)==true)
+				System.out.println("delete successful");
+			else
+				System.out.println("delete not completed");
+			
+			title_name = URLEncoder.encode(title_name,"UTF-8");
+	        return "comunity";
+		}
+		
 }
 
  
