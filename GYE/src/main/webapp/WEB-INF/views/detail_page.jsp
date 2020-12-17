@@ -15,6 +15,7 @@ css코드는 무료 오픈소스 템플릿을 이용하여 작성되었습니다
 <head>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <!--디자인 스타일-->
+    <title>TakeALook</title>
     <style>
         *, ::after, ::before {
             box-sizing: border-box;
@@ -5148,7 +5149,6 @@ css코드는 무료 오픈소스 템플릿을 이용하여 작성되었습니다
             font-size: 50px;
             color: white;
             line-height: 50px;
-            background-color: #FACC2E;
             font-weight: bold;
         }
 
@@ -7590,8 +7590,7 @@ css코드는 무료 오픈소스 템플릿을 이용하여 작성되었습니다
                                     </div>
                                 </div>
                             </div>
-                            <div class="anime__details__btn">
-                                <a href="#" class="follow-btn"> 찜하기</a>
+                            <div class="anime__details__btn">                      
                                 <%String theater = (String)request.getAttribute("is_current_on_theater"); %>
                                 <%if(theater == "true"){ %>
                                 	<a href="http://www.cgv.co.kr/ticket/" class="watch-btn"><span>예매하기</span> </a>

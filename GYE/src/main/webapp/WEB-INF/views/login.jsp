@@ -1,3 +1,9 @@
+<!-- 
+프로그램명 : 로그인 페이지 구현
+작성자 : 임경수, 반건우 
+작성일자 : 2020-12-16
+프로그램 설명 : 떼껄룩의 로그인 페이지 구현, 회원가입과 비밀번호도 이곳에서 찾을 수 있도록 한다
+-->
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -5,7 +11,7 @@
 
 <html>
 <head>
-
+	<title>TakeALook</title>
     <!--디자인 스타일-->
     <style>
         *, ::after, ::before {
@@ -4047,7 +4053,7 @@
             font-size: 50px;
             color: white;
             line-height: 50px;
-            background-color: #FACC2E;
+            
             font-weight: bold;
         }
         h2 {
@@ -6038,16 +6044,16 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-2">
-                    <h1>MRS</h1>  <!--로고 -->
+                    <h1>떼껄룩</h1>  <!--로고 -->
                 </div>
                 <div class="col-lg-6">
                     <div class="header__nav">
                         <nav class="header__menu mobile-menu"> <!--헤더 중앙 -->
                             <ul>
-                                <li class="active"><a href="./index.html">홈페이지</a></li>
-                                <li><a href="./categories.html">박스오피스 </a></li>
-                                <li><a href="./blog.html">추천영화</a> </li>
-                                <li><a href="#">커뮤니티</a></li>
+                                <li class="active"><a href="/GYE">홈페이지</a></li>
+                                <li><a href="/GYE/BoxOffice">박스오피스 </a></li>
+                                <li><a href="/GYE/recommend">추천영화</a> </li>
+                                <li><a href="/GYE/comunity">커뮤니티</a></li>
 
                             </ul>
                         </nav>
@@ -6055,12 +6061,8 @@
                 </div>
                 <div class="col-lg-4">
                     <div class="header__right"> <!--헤더 우측 -->
-                        <form>
-                            <input id="userid" type="text" placeholder="ID">
-                            <input id="passwd" type="password" placeholder="password">
-                            <input id="id_submit" value="전송" type="submit">
-                        </form>
-                        <a id="sign_in" href="#sign">회원가입</a>
+                      
+                        
                     </div>
                 </div>
             </div>
@@ -6089,22 +6091,22 @@
                         <h3>로그인</h3>
                         <form action="login.do" method='post'>
                             <div class="input__item">
-                                <input name="ID" type="text" placeholder="아이디">
+                                <input name="ID" type="text" autocomplete='off' placeholder="아이디">
                                 <span class="icon_mail"></span>
                             </div>
                             <div class="input__item">
-                                <input name="PW" type="text" placeholder="비밀번호">
+                                <input name="PW" type="text" autocomplete='off' placeholder="비밀번호">
                                 <span class="icon_lock"></span>
                             </div>
                             <button type="submit" class="site-btn">로그인</button>
                         </form>
-                        <a href="#" class="forget_pass">비밀번호 찾기</a>
+                        <a href="/GYE/find_password" class="forget_pass">비밀번호 찾기</a>
                     </div>
                 </div>
                 <div class="col-lg-6">
                     <div class="login__register">
                         <h3>아이디가 없으신가요?</h3>
-                        <a href="#" class="primary-btn">회원가입</a>
+                        <a href="/GYE/register" class="primary-btn">회원가입</a>
                     </div>
                 </div>
             </div>
@@ -6123,21 +6125,10 @@
             <div class="row">
                 <div class="col-lg-3">
                     <div class="footer__logo">
-                        <h1>MRS</h1>
+                        
                     </div>
                 </div>
-                <div class="col-lg-6">
-                    <div class="footer__nav">
-                        <form>
-                            <select name='sear_sel'>
-                                <option value=''>영화이름검색</option>
-                                <option value=''>영화사이름검색</option>
-                            </select>
-                            <input type='text'>
-                            <input type='submit'>
-                        </form>
-                    </div>
-                </div>
+                
             </div>
         </div>
     </footer>

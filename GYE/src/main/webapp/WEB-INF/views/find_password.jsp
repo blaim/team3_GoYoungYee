@@ -1,9 +1,9 @@
 <!-- 
-회원가입 페이지 구현
-작성자: 반건우, 임경수
-작성일 : 2020-12-8
-설명 : 새로운 아이디를 생성하는 페이지
- -->
+프로그램명 : find_password.jsp
+작성자 :황근민,반용빈
+작성일자 : 2020-12-15
+프로그램 설명: 비밀번호 찾기 화면
+-->
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
@@ -44,24 +44,35 @@
             margin-top: 0;
             margin-bottom: .5rem;
         }
-
+        h3{
+            background-color:azure;
+        }
         h7 {
+            top:15%;
             left:45%;
             font-size: 50px;
             color:white;
-         position: relative;
+         position: fixed;
         }
+        h10{
+          float:right;
+          left:50%;
+          color:black;
+          width:50px;
 
+        }
         .lgin_body {
+            
+            position:fixed;
+            top:20%;
             margin: 20px 40px;
             width: 100%;
             height: 100%;
-            position: relative;
         }
 
             .lgin_body form {
                 width: 900px;
-                height: 700px;
+                height: 400px;
                 top: 5%;
                 left: 45%;
                 margin: 0 0 0 -350px;
@@ -88,12 +99,11 @@
         a {
             color: white;
             text-decoration: none;
-            background-color: transparent;
         }
 
             a:hover {
-                color: #007bff;
-                text-decoration: underline;
+                text-decoration: none;
+                color:yellow;
             }
 
             a:not([href]) {
@@ -106,8 +116,9 @@
                     text-decoration: none;
                 }
         button {
-            border-radius: 0;
+            border-radius: 3px;
         }
+
 
             button:focus {
                 outline: 1px dotted;
@@ -164,7 +175,7 @@
 
         .h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
             margin-bottom: .5rem;
-            font-weight: 500;
+            font-weight: 400;
             line-height: 1.2;
         }
 
@@ -296,9 +307,8 @@
         h1 {
             text-align: center;
             font-size: 50px;
-            color: white;
+            color: black;
             line-height: 50px;
-            
             font-weight: bold;
         }
 
@@ -552,7 +562,37 @@
                     margin: 0;
                     text-align: center;
                 }
-
+                
+			
+			#write_box{
+				left:32%;
+				top:30%;
+				width:40%;
+				height:20%;
+				background-color:#252642;
+				position:absolute;
+				display:none;
+			}
+			
+			#write_box *{
+				display:block;
+			}
+			
+			#close_button{
+                position:relative; 
+				width:40px;
+				height:40px;
+                float:right;
+				
+			}
+			
+			
+			#write_btn{
+                position:relative;
+                width:50%;
+				height:50%;
+			}
+			
     </style>
 </head>
 <body>
@@ -564,10 +604,12 @@
     <header class="header">
         <div class="container">
             <div class="row">
-                <div class="col-lg-2">
-                    <h1><a href="./home.html">때껄룩</a></h1> <!--로고 -->
+                    <div class="col-lg-1">
+                        <h3></h3>
+                        <h1><a href="/GYE">떼껄룩</a></h1> <!--로고 -->
+                    </div>
+
                 </div>
-            </div>
             <div id="mobile-menu-wrap">
                 <!--하단부 -->
                 <div class="slicknav_menu">
@@ -578,37 +620,19 @@
             </div>
         </div>
         <!-- 헤더 끝 -->
-        <!-- 회원가입 Begin -->
-        <h7>회원가입</h7>
+        <!-- 비밀번호 찾기 Begin -->
+        <h7>비밀번호 찾기</h7>
             <div class='lgin_body'>
-                <form action='register.do' method='post'>
-                    <input id='idname' autocomplete='off' name='ID' type='text' placeholder='아이디 입력' />
-                    <input id='psword' autocomplete='off' name='PW' type='text' placeholder='비밀번호 입력' />
-                    <input id='psword_rpt' autocomplete='off' name='PW_repeat' type='text' placeholder='비밀번호 한번더' />
-                    <input id='name' name='name' autocomplete='off' type='text' placeholder='이름'/>
-                    <input id='age' name='age' autocomplete='off' type='number' min='1' max='200' placeholder='나이' />
-                    <input id='name' name='question' autocomplete='off' type='text' placeholder='질문(비밀번호 찾을 때 사용됩니다)'/>
-                    <input id='name' name='answer' autocomplete='off' type='text' placeholder='답변'/>
-
-                    <input id='submit_btn' type='submit' />
+                <form action='find_password.do' method='post'>
+                    <input id='idname' name='ID' autocomplete='off' type='text' placeholder='아이디' />
+                    <input id='question' autocomplete='off' name='Question' type='text' placeholder='질문을 입력해주세요'/>                    
+                    <input id='answer' autocomplete='off' name='Answer' type='text' placeholder='답변'/>
+                    <input id='submit_btn' value="비밀번호 찾기" type='submit' />      
                 </form>
             </div>
-        <!-- 회원가입 End -->
+        <!-- 비밀번호 찾기 End -->
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+		
 
 </body>
 

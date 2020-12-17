@@ -1,9 +1,9 @@
 <!-- 
-회원가입 페이지 구현
-작성자: 반건우, 임경수
-작성일 : 2020-12-8
-설명 : 새로운 아이디를 생성하는 페이지
- -->
+프로그램명 : find_password_result.jsp
+작성자 :황근민
+작성일자 : 2020-12-15
+프로그램 설명: 비밀번호 찾기 결과 화면
+-->
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
@@ -44,24 +44,35 @@
             margin-top: 0;
             margin-bottom: .5rem;
         }
-
+        h3{
+            background-color:azure;
+        }
         h7 {
+            top:15%;
             left:45%;
             font-size: 50px;
             color:white;
-         position: relative;
+         position: fixed;
         }
+        h10{
+          float:right;
+          left:50%;
+          color:black;
+          width:50px;
 
+        }
         .lgin_body {
+            
+            position:fixed;
+            top:20%;
             margin: 20px 40px;
             width: 100%;
             height: 100%;
-            position: relative;
         }
 
             .lgin_body form {
                 width: 900px;
-                height: 700px;
+                height: 400px;
                 top: 5%;
                 left: 45%;
                 margin: 0 0 0 -350px;
@@ -88,12 +99,10 @@
         a {
             color: white;
             text-decoration: none;
-            background-color: transparent;
         }
 
             a:hover {
-                color: #007bff;
-                text-decoration: underline;
+                text-decoration: none;
             }
 
             a:not([href]) {
@@ -106,8 +115,9 @@
                     text-decoration: none;
                 }
         button {
-            border-radius: 0;
+            border-radius: 3px;
         }
+
 
             button:focus {
                 outline: 1px dotted;
@@ -164,7 +174,7 @@
 
         .h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
             margin-bottom: .5rem;
-            font-weight: 500;
+            font-weight: 400;
             line-height: 1.2;
         }
 
@@ -296,9 +306,8 @@
         h1 {
             text-align: center;
             font-size: 50px;
-            color: white;
+            color: black;
             line-height: 50px;
-            
             font-weight: bold;
         }
 
@@ -552,7 +561,59 @@
                     margin: 0;
                     text-align: center;
                 }
-
+                
+			
+			#write_box{
+				left:32%;
+				top:30%;
+				width:40%;
+				height:20%;
+				background-color:#252642;
+				position:absolute;
+				display:none;
+			}
+			
+			#write_box *{
+				display:block;
+			}
+			
+			#close_button{
+                position:relative; 
+				width:40px;
+				height:40px;
+                float:right;
+				
+			}
+			
+			
+			#write_btn{
+                position:relative;
+                width:50%;
+				height:50%;
+			}
+			
+			form p{
+				font-size:40px;
+				text-align:center;
+				margin-top:150px;
+			}
+			
+			form a{
+				font-size:30px;
+				text-align:center;
+				display:block;
+				margin-top:70px;
+				
+			}
+			
+			a:hover{
+				color:black;
+			}
+			
+			p p{
+				font-weight:bold;
+			}
+			
     </style>
 </head>
 <body>
@@ -564,52 +625,39 @@
     <header class="header">
         <div class="container">
             <div class="row">
-                <div class="col-lg-2">
-                    <h1><a href="./home.html">때껄룩</a></h1> <!--로고 -->
-                </div>
+                    <div class="col-lg-1">
+                        <h3></h3>
+                        <h1><a href="/GYE">떼껄룩</a></h1> <!--로고 -->
+                    </div>
             </div>
             <div id="mobile-menu-wrap">
                 <!--하단부 -->
                 <div class="slicknav_menu">
                     <a href="#" aria-haspopup="true" role="button" tabindex="0" class="slicknav_btn slicknav_collapsed" style="outline: none;"><span class="slicknav_menutxt">MENU</span><span class="slicknav_icon"><span class="slicknav_icon-bar"></span><span class="slicknav_icon-bar"></span><span class="slicknav_icon-bar"></span></span></a><nav class="slicknav_nav slicknav_hidden" aria-hidden="true" role="menu" style="display: none;">
-
                     </nav>
                 </div>
             </div>
         </div>
+        </header>
         <!-- 헤더 끝 -->
-        <!-- 회원가입 Begin -->
-        <h7>회원가입</h7>
-            <div class='lgin_body'>
-                <form action='register.do' method='post'>
-                    <input id='idname' autocomplete='off' name='ID' type='text' placeholder='아이디 입력' />
-                    <input id='psword' autocomplete='off' name='PW' type='text' placeholder='비밀번호 입력' />
-                    <input id='psword_rpt' autocomplete='off' name='PW_repeat' type='text' placeholder='비밀번호 한번더' />
-                    <input id='name' name='name' autocomplete='off' type='text' placeholder='이름'/>
-                    <input id='age' name='age' autocomplete='off' type='number' min='1' max='200' placeholder='나이' />
-                    <input id='name' name='question' autocomplete='off' type='text' placeholder='질문(비밀번호 찾을 때 사용됩니다)'/>
-                    <input id='name' name='answer' autocomplete='off' type='text' placeholder='답변'/>
-
-                    <input id='submit_btn' type='submit' />
-                </form>
-            </div>
-        <!-- 회원가입 End -->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        <!-- 비밀번호 결과 Begin -->
+        <h7>비밀번호 찾기</h7>
+        <% String result = (String)request.getAttribute("result"); %>
+        <div class='lgin_body'>
+        	<form>
+        		<% if(result.equals("틀린 회원 정보입니다.")) 
+				{%>
+					<p><%=result %></p>
+					<a href="/GYE/find_password">비밀번호 찾기 화면으로 돌아가기</a>					
+				<%}	
+        		else
+				{%>
+        			<p>회원가입시 비밀번호는 <%=result %>입니다.</p>
+                	<a href="/GYE/login">로그인 화면으로 돌아가기</a>
+                <%}	
+				%>
+        	</form>
+        </div>
 </body>
 
 

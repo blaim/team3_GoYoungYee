@@ -13,6 +13,7 @@
 <html>
 	
 	<head>
+		<title>TakeALook</title>
 		<style>
 			*{
 				margin:0px;
@@ -55,18 +56,30 @@
 				height:60px;
 				display:block;
 				overflow:hidden;
+				color:white;
+				font-size:30px;
+				text-align:center;
 			}
 			.header form{
-				width:430px;
+				width:50px;
 				margin: 0;
 				float:left;
 			}
+			
+			.header form button{
+				width:100px;
+				height:60px;
+				font-size:20px;
+				font-weight:bold;
+			}
+			
 			.header a{
 				position:absolute;
 				top:8px;
 				font-size:30px;
 				text-decoration:none;
-				background-color:white;
+				color:white;
+				left:50px;
 				border:2px solid black;
 			}
 			.header a:hover{
@@ -157,6 +170,16 @@
 				
 			}
 			
+			.spe_movie a{
+				text-decoration:none;
+				color:black;
+			}
+			
+			.spe_movie a:hover{
+				color:white;
+			}
+			
+			
 			#movie_image{
 				grid-column-start : 1;
 				grid-column-end:2;
@@ -207,7 +230,7 @@
         			</form>
     			</c:when>
     			<c:otherwise>
-					<a id='sign_in' href="/GYE/login">회원가입</a>
+					<a id='sign_in' href="/GYE/login">로그인</a>
 				</c:otherwise>
 			</c:choose>	
 		</div>
@@ -218,7 +241,7 @@
 				<ul>
 					<li><a href="/GYE">메인</a></li>
 					<li><a class="active" href="/GYE/BoxOffice">박스오피스</a></li>
-					<li><a href="#recom">추천영화</a></li>
+					<li><a href="/GYE/recommend">추천영화</a></li>
 					<li><a href="/GYE/comunity">커뮤니티</a></li>
 				</ul>
 			</div>
@@ -242,7 +265,7 @@
 				<option value='mvname'>영화이름검색</option>
 				<option value='makername'>영화사이름검색</option>
 			</select>
-				<input id="search" name='search' type='text' />
+				<input id="search" autocomplete='off' name='search' type='text' />
 				<input id='search_submit' type='submit' />
 			</form>
 		</div>
